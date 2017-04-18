@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import '../public/css/Leg.css'
+import anatomy from '../public/json/anatomy.json'
 
 class Leg extends React.Component {
   constructor (props) {
@@ -34,7 +35,7 @@ class Leg extends React.Component {
     }
   }
   render () {
-    const { img, style } = this.props.legType
+    const { img, style } = anatomy.parts.legs[this.props.legType]
     return (
       <img
         className={`leg ${style}`}
@@ -44,17 +45,14 @@ class Leg extends React.Component {
     )
   }
 }
-const { bool, number, string, shape } = React.PropTypes
+const { bool, number, string } = React.PropTypes
 Leg.propTypes = {
   xOffset: number,
   reverse: bool,
   leftLegAngle: number,
   rightLegAngle: number,
   side: string,
-  legType: shape({
-    img: string,
-    style: string
-  })
+  legType: number
 }
 const mapStateToProps = (state) => {
   return {

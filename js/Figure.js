@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import '../public/css/Figure.css'
 import Arm from './Arm'
 import Leg from './Leg'
@@ -8,9 +9,8 @@ class Figure extends React.Component {
     super(props)
     console.log('Check out my figure!')
   }
-
   orientLimbs () {
-    const pos = this.props.position
+    const pos = this.props.bodyPosition
     switch (pos) {
       case 1:
         return {
@@ -34,17 +34,6 @@ class Figure extends React.Component {
         }
     }
   }
-  pickLegs (side) {
-    const legs = this.props.legType ? this.props.legType[side] : 'default'
-    switch (legs) {
-      case 0:
-        return {img: 'leg-straight', style: 'tall-limb'}
-      case 1:
-        return {img: 'leg-bent', style: 'wide-limb'}
-      default:
-        return {img: 'leg-straight', style: 'tall-limb'}
-    }
-  }
   render () {
     const limbs = this.orientLimbs()
     const reverse = limbs.reverse
@@ -57,13 +46,13 @@ class Figure extends React.Component {
           <Arm side='right' xOffset={xOffset[1]} reverse={reverse[1]} />
           <Leg
             side='left'
-            legType={this.pickLegs('left')}
+            legType={this.props.leftLegType}
             xOffset={xOffset[2]}
             reverse={reverse[2]}
           />
           <Leg
             side='right'
-            legType={this.pickLegs('right')}
+            legType={this.props.rightLegType}
             xOffset={xOffset[3]}
             reverse={reverse[3]}
           />
@@ -73,14 +62,20 @@ class Figure extends React.Component {
   }
 }
 
-const { number, shape } = React.PropTypes
+const { number } = React.PropTypes
 
 Figure.propTypes = {
-  position: number,
-  legType: shape({
-    right: number,
-    left: number
-  })
+  bodyPosition: number,
+  leftLegType: number,
+  rightLegType: number
 }
 
-export default Figure
+const mapStateToProps = (state) => {
+  return {
+    bodyPosition: state.bodyPosition,
+    rightLegType: state.rightLegType,
+    leftLegType: state.leftLegType
+  }
+}
+
+export default connect(mapStateToProps)(Figure)

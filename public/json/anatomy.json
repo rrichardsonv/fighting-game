@@ -1,0 +1,32 @@
+{
+  "parts": {
+    "heads":[{
+      "id": 0,
+      "name": "Old Man",
+      "img": "old-head",
+      "style": "tall-limb" 
+    }],
+    "legs":[{
+      "id": 0,
+      "name": "Straight",
+      "img": "straight-leg",
+      "style": "tall-limb"
+    }, {
+      "id": 1,
+      "name": "Bent",
+      "img": "bent-leg",
+      "style": "wide-limb"
+    }],
+    "arms":[{
+      "id": 0,
+      "name": "Default",
+      "img": "default-arm",
+      "style": "tall-limb" 
+    }, {
+      "id": 1,
+      "name": "Crab",
+      "img": "crab-arm",
+      "style": "tall-limb" 
+    }]
+  }
+}

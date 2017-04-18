@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class AngleController extends React.Component {
   render () {
-    console.log(this.props.angleHandlers)
     const { leftArm, rightArm, leftLeg, rightLeg } = this.props.angleHandlers
     return (
       <div className='angle-panel'>

@@ -2,12 +2,13 @@ import React from 'react'
 import '../public/css/Figure.css'
 import Arm from './Arm'
 import Leg from './Leg'
-const { number } = React.PropTypes
 
-const Figure = React.createClass({
-  propTypes: {
-    position: number
-  },
+class Figure extends React.Component {
+  constructor (props) {
+    super(props)
+    console.log('Check out my figure!')
+  }
+
   orientLimbs () {
     const pos = this.props.position
     switch (pos) {
@@ -20,7 +21,8 @@ const Figure = React.createClass({
       default:
         return [false, true, false, true]
     }
-  },
+  }
+
   render () {
     const bodyPosition = this.orientLimbs()
     return (
@@ -35,6 +37,12 @@ const Figure = React.createClass({
       </div>
     )
   }
-})
+}
+
+const { number } = React.PropTypes
+
+Figure.propTypes = {
+  position: number
+}
 
 export default Figure

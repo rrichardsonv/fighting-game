@@ -1,10 +1,6 @@
 import React from 'react'
-const { bool } = React.PropTypes
 
-const Arm = React.createClass({
-  propTypes: {
-    reverse: bool
-  },
+class Arm extends React.Component {
   render () {
     if (this.props.reverse) {
       return (
@@ -16,6 +12,12 @@ const Arm = React.createClass({
       )
     }
   }
-})
+}
+
+const { bool, number } = React.PropTypes
+Arm.propTypes = {
+  reverse: bool,
+  angle: number
+}
 
 export default Arm

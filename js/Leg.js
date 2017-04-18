@@ -1,10 +1,6 @@
 import React from 'react'
-const { bool } = React.PropTypes
 
-const Leg = React.createClass({
-  propTypes: {
-    reverse: bool
-  },
+class Leg extends React.Component {
   render () {
     if (this.props.reverse) {
       return (
@@ -16,6 +12,11 @@ const Leg = React.createClass({
       )
     }
   }
-})
+}
+const { bool, number } = React.PropTypes
+Leg.propTypes = {
+  reverse: bool,
+  angle: number
+}
 
 export default Leg

@@ -1,11 +1,31 @@
 .body{
   height: 200px;
   width: 100px;
-  background: black;
+  background: pink;
   opacity: 0.7;
   position: relative;
 }
+.drop-location{
+  height: 400px;
+  width: 200px;
+  border: 2px dotted red;
+}
 
-.body-part{
+.main-trunk{
+  margin: 0 auto;
+}
+.head{
+  background: blue;
+  height: 25px;
+  width: 20px;
+}
+
+.torso{
   position: absolute;
+  background: red;
+  top: 25px;
+  left: 30px;
+  right: 30px;
+  width: 40px;
+  height: 65px;
 }

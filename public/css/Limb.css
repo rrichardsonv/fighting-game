@@ -1,5 +1,30 @@
 .limb{
-  background: pink;
-  width: 5px;
-  height: 20px;
+  position:absolute;
+  z-index: 10;
+  width: 8px;
+  height: 50px;
+}
+.arm{
+  background: black;
+  border: 1px solid black;
+}
+
+.leg{
+  background: purple;
+  border: 1px solid black;
+}
+
+.limb-right-arm{
+}
+
+.limb-left-arm{
+
+}
+
+.limb-right-leg{
+
+}
+.limb-left-leg{
+  
+
 }

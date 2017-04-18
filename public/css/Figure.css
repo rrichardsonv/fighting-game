@@ -1,0 +1,22 @@
+.figure{
+  height: 300px;
+  width: 100px;
+  position: relative;
+}
+.torso-wrapper{
+  padding-top: 50px;
+}
+
+.figure img{
+  max-width: 50px;
+  height: auto;
+}
+.head{
+  position: absolute;
+  top: 0;
+  right:25%;
+}
+
+.reverse{
+  transform: scaleX(-1);
+}

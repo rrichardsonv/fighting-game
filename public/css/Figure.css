@@ -12,11 +12,12 @@
   height: auto;
 }
 .head{
+  z-index: 12;
   position: absolute;
   top: 0;
   right:25%;
 }
 
-.reverse{
-  transform: scaleX(-1);
+.limbo{
+  transform-origin: 0, 0;
 }

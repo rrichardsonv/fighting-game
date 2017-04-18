@@ -29,10 +29,10 @@ class Figure extends React.Component {
       <div className='figure'>
         <img className='head' src='../public/img/head.png' />
         <div className='torso-wrapper'>
-          <Arm reverse={bodyPosition[0]} />
-          <Arm reverse={bodyPosition[1]} />
-          <Leg reverse={bodyPosition[2]} />
-          <Leg reverse={bodyPosition[3]} />
+          <Arm side='left' reverse={bodyPosition[0]} />
+          <Arm side='right' reverse={bodyPosition[1]} />
+          <Leg side='left' reverse={bodyPosition[2]} />
+          <Leg side='right' reverse={bodyPosition[3]} />
         </div>
       </div>
     )

@@ -3,8 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './redux/Figure/store'
 import Figure from './Figure'
-import AngleController from './AngleController'
-import BodyPartPalette from './BodyPartPalette'
+import ControlPanelContainer from './ControlPanelContainer'
 import '../public/css/normalize.css'
 
 const App = React.createClass({
@@ -12,10 +11,7 @@ const App = React.createClass({
     return (
       <Provider store={store}>
         <div className='app'>
-          <div className='control-panel'>
-            <AngleController />
-            <BodyPartPalette />
-          </div>
+          <ControlPanelContainer />
           <Figure legType={{right: 0, left: 1}} position={1} />
         </div>
       </Provider>

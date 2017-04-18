@@ -1,33 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setLeftArmAngle, setRightArmAngle, setLeftLegAngle, setRightLegAngle } from './redux/Figure/actionCreators'
 
 class AngleController extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.handleRightLegAngleChange = this.handleRightLegAngleChange.bind(this)
-    this.handleLeftLegAngleChange = this.handleLeftLegAngleChange.bind(this)
-    this.handleLeftArmAngleChange = this.handleLeftArmAngleChange.bind(this)
-    this.handleRightArmAngleChange = this.handleRightArmAngleChange.bind(this)
-  }
-  handleLeftArmAngleChange (event) {
-    let angle = parseInt(event.target.value) / 100
-    this.props.dispatch(setLeftArmAngle(angle))
-  }
-  handleRightArmAngleChange (event) {
-    let angle = parseInt(event.target.value) / 100
-    this.props.dispatch(setRightArmAngle(angle))
-  }
-  handleLeftLegAngleChange (event) {
-    let angle = parseInt(event.target.value) / 100
-    this.props.dispatch(setLeftLegAngle(angle))
-  }
-  handleRightLegAngleChange (event) {
-    let angle = parseInt(event.target.value) / 100
-    this.props.dispatch(setRightLegAngle(angle))
-  }
   render () {
+    console.log(this.props.angleHandlers)
+    const { leftArm, rightArm, leftLeg, rightLeg } = this.props.angleHandlers
     return (
       <div className='angle-panel'>
         <p>
@@ -38,7 +15,7 @@ class AngleController extends React.Component {
             min='-150'
             max='150'
             value={this.props.leftArmAngle}
-            onChange={this.handleLeftArmAngleChange}
+            onChange={leftArm}
           /><br />
           <input
             name='right-arm'
@@ -47,7 +24,7 @@ class AngleController extends React.Component {
             min='-150'
             max='150'
             value={this.props.rightArmAngle}
-            onChange={this.handleRightArmAngleChange}
+            onChange={rightArm}
           /><br />
           <input
             name='left-leg'
@@ -56,7 +33,7 @@ class AngleController extends React.Component {
             min='-150'
             max='150'
             value={this.props.leftLegAngle}
-            onChange={this.handleLeftLegAngleChange}
+            onChange={leftLeg}
           /><br />
           <input
             name='right-leg'
@@ -65,21 +42,26 @@ class AngleController extends React.Component {
             min='-157'
             max='157'
             value={this.props.rightLegAngle}
-            onChange={this.handleRightLegAngleChange}
+            onChange={rightLeg}
           /><br />
         </p>
       </div>
     )
   }
 }
-const { func, number } = React.PropTypes
+const { func, number, shape } = React.PropTypes
 
 AngleController.propTypes = {
   leftArmAngle: number,
   rightArmAngle: number,
   leftLegAngle: number,
   rightLegAngle: number,
-  dispatch: func
+  angleHandlers: shape({
+    leftArm: func,
+    rightArm: func,
+    leftLeg: func,
+    rightLeg: func
+  })
 }
 
 const mapStateToProps = (state) => {

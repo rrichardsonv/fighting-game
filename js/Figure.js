@@ -13,26 +13,40 @@ class Figure extends React.Component {
     const pos = this.props.position
     switch (pos) {
       case 1:
-        return [false, false, false, false]
+        return {
+          reverse: [false, false, false, false],
+          xOffset: [0, 0, 0, 0]
+        }
       case 0:
-        return [false, true, false, true]
+        return {
+          reverse: [false, true, true, false],
+          xOffset: [0, -40, 50, 0]
+        }
       case -1:
-        return [true, true, false, false]
+        return {
+          reverse: [true, true, true, true],
+          xOffset: [40, -40, 60, -40]
+        }
       default:
-        return [false, true, false, true]
+        return {
+          reverse: [false, true, true, false],
+          xOffset: [0, -40, 50, 0]
+        }
     }
   }
 
   render () {
-    const bodyPosition = this.orientLimbs()
+    const limbs = this.orientLimbs()
+    const reverse = limbs.reverse
+    const xOffset = limbs.xOffset
     return (
       <div className='figure'>
         <img className='head' src='../public/img/head.png' />
         <div className='torso-wrapper'>
-          <Arm side='left' reverse={bodyPosition[0]} />
-          <Arm side='right' reverse={bodyPosition[1]} />
-          <Leg side='left' reverse={bodyPosition[2]} />
-          <Leg side='right' reverse={bodyPosition[3]} />
+          <Arm side='left' xOffset={xOffset[0]} reverse={reverse[0]} />
+          <Arm side='right' xOffset={xOffset[1]} reverse={reverse[1]} />
+          <Leg side='left' xOffset={xOffset[2]} reverse={reverse[2]} />
+          <Leg side='right' xOffset={xOffset[3]} reverse={reverse[3]} />
         </div>
       </div>
     )

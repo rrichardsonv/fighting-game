@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import '../public/css/Leg.css'
 
 class Leg extends React.Component {
   constructor (props) {
@@ -33,22 +34,27 @@ class Leg extends React.Component {
     }
   }
   render () {
+    const { img, style } = this.props.legType
     return (
       <img
-        className='limbo'
+        className={`leg ${style}`}
         style={this.handleAngleChange()}
-        src='../public/img/leg-straight.png'
+        src={`../public/img/${img}.png`}
       />
     )
   }
 }
-const { bool, number, string } = React.PropTypes
+const { bool, number, string, shape } = React.PropTypes
 Leg.propTypes = {
   xOffset: number,
   reverse: bool,
   leftLegAngle: number,
   rightLegAngle: number,
-  side: string
+  side: string,
+  legType: shape({
+    img: string,
+    style: string
+  })
 }
 const mapStateToProps = (state) => {
   return {

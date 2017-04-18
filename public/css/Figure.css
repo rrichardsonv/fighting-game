@@ -11,17 +11,25 @@
   padding-top: 50px;
 }
 
-.figure img{
+.figure .tall-limb{
   max-width: 50px;
   height: auto;
 }
+
 .head{
-  z-index: 12;
+  z-index: 20;
   position: absolute;
   top: 0;
   right:25%;
 }
+.figure .wide-limb{
+  max-width: 90px;
+  height: auto;
+  z-index: 5;
+}
 
-.limbo{
-  transform-origin: 0, 0;
+.leg.wide-limb{
+  position: absolute;
+  top: 115px;
+  left: 70px;
 }

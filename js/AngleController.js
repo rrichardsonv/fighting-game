@@ -28,45 +28,46 @@ class AngleController extends React.Component {
     this.props.dispatch(setRightLegAngle(angle))
   }
   render () {
-    const { leftArmAngle, rightArmAngle, leftLegAngle, rightLegAngle } = this.props
     return (
-      <div className='control-panel'>
-        <input
-          name='left-arm'
-          type='range'
-          step='15'
-          min='-150'
-          max='150'
-          value={leftArmAngle}
-          onChange={this.handleLeftArmAngleChange}
-        />
-        <input
-          name='right-arm'
-          type='range'
-          step='15'
-          min='-150'
-          max='150'
-          value={rightArmAngle}
-          onChange={this.handleRightArmAngleChange}
-        />
-        <input
-          name='left-leg'
-          type='range'
-          step='15'
-          min='-150'
-          max='150'
-          value={leftLegAngle}
-          onChange={this.handleLeftLegAngleChange}
-        />
-        <input
-          name='right-leg'
-          type='range'
-          step='17'
-          min='-157'
-          max='157'
-          value={rightLegAngle}
-          onChange={this.handleRightLegAngleChange}
-        />
+      <div className='angle-panel'>
+        <p>
+          <input
+            name='left-arm'
+            type='range'
+            step='15'
+            min='-150'
+            max='150'
+            value={this.props.leftArmAngle}
+            onChange={this.handleLeftArmAngleChange}
+          /><br />
+          <input
+            name='right-arm'
+            type='range'
+            step='15'
+            min='-150'
+            max='150'
+            value={this.props.rightArmAngle}
+            onChange={this.handleRightArmAngleChange}
+          /><br />
+          <input
+            name='left-leg'
+            type='range'
+            step='15'
+            min='-150'
+            max='150'
+            value={this.props.leftLegAngle}
+            onChange={this.handleLeftLegAngleChange}
+          /><br />
+          <input
+            name='right-leg'
+            type='range'
+            step='17'
+            min='-157'
+            max='157'
+            value={this.props.rightLegAngle}
+            onChange={this.handleRightLegAngleChange}
+          /><br />
+        </p>
       </div>
     )
   }

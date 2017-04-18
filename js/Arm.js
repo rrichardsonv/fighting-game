@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import '../public/css/Arm.css'
 
 class Arm extends React.Component {
   constructor (props) {
@@ -35,7 +36,7 @@ class Arm extends React.Component {
   render () {
     return (
       <img
-        className='limbo'
+        className='arm tall-limb'
         style={this.handleAngleChange()}
         src='../public/img/arm.png'
       />

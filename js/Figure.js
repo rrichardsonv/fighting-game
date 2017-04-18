@@ -34,29 +34,53 @@ class Figure extends React.Component {
         }
     }
   }
-
+  pickLegs (side) {
+    const legs = this.props.legType ? this.props.legType[side] : 'default'
+    switch (legs) {
+      case 0:
+        return {img: 'leg-straight', style: 'tall-limb'}
+      case 1:
+        return {img: 'leg-bent', style: 'wide-limb'}
+      default:
+        return {img: 'leg-straight', style: 'tall-limb'}
+    }
+  }
   render () {
     const limbs = this.orientLimbs()
     const reverse = limbs.reverse
     const xOffset = limbs.xOffset
     return (
       <div className='figure'>
-        <img className='head' src='../public/img/head.png' />
+        <img className='head tall-limb' src='../public/img/head.png' />
         <div className='torso-wrapper'>
           <Arm side='left' xOffset={xOffset[0]} reverse={reverse[0]} />
           <Arm side='right' xOffset={xOffset[1]} reverse={reverse[1]} />
-          <Leg side='left' xOffset={xOffset[2]} reverse={reverse[2]} />
-          <Leg side='right' xOffset={xOffset[3]} reverse={reverse[3]} />
+          <Leg
+            side='left'
+            legType={this.pickLegs('left')}
+            xOffset={xOffset[2]}
+            reverse={reverse[2]}
+          />
+          <Leg
+            side='right'
+            legType={this.pickLegs('right')}
+            xOffset={xOffset[3]}
+            reverse={reverse[3]}
+          />
         </div>
       </div>
     )
   }
 }
 
-const { number } = React.PropTypes
+const { number, shape } = React.PropTypes
 
 Figure.propTypes = {
-  position: number
+  position: number,
+  legType: shape({
+    right: number,
+    left: number
+  })
 }
 
 export default Figure

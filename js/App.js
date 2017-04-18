@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import store from './redux/Figure/store'
 import Figure from './Figure'
 import AngleController from './AngleController'
+import BodyPartPalette from './BodyPartPalette'
 import '../public/css/normalize.css'
 
 const App = React.createClass({
@@ -11,10 +12,11 @@ const App = React.createClass({
     return (
       <Provider store={store}>
         <div className='app'>
-          <AngleController />
-          <Figure position={1} />
-          <Figure position={0} />
-          <Figure position={-1} />
+          <div className='control-panel'>
+            <AngleController />
+            <BodyPartPalette />
+          </div>
+          <Figure legType={{right: 0, left: 1}} position={1} />
         </div>
       </Provider>
     )

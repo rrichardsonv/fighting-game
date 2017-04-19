@@ -15,13 +15,16 @@
       "id": 1,
       "name": "Bent",
       "img": "bent-leg",
-      "style": "wide-limb"
+      "style": "wide-limb",
+      "offset": -80,
+      "pivot": "left"
     }],
     "arms":[{
       "id": 0,
       "name": "Default",
       "img": "default-arm",
-      "style": "tall-limb" 
+      "style": "tall-limb",
+      "pivot": "right"
     }, {
       "id": 1,
       "name": "Crab",

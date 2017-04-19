@@ -4,7 +4,7 @@ import '../public/css/Arm.css'
 import anatomy from '../public/json/anatomy.json'
 
 class Arm extends React.Component {
-  handleAngleChange () {
+  handleAngleChange (pivot) {
     let matrix
     let rotate
     if (this.props.reverse) {
@@ -30,11 +30,11 @@ class Arm extends React.Component {
     }
   }
   render () {
-    const { img, style } = anatomy.parts.arms[this.props.armType]
+    const { img, style, pivot } = anatomy.parts.arms[this.props.armType]
     return (
       <img
         className={`arm ${style}`}
-        style={this.handleAngleChange()}
+        style={this.handleAngleChange(pivot)}
         src={`../public/img/${img}.png`}
       />
     )

@@ -9,37 +9,32 @@ class Leg extends React.Component {
 
     this.handleAngleChange = this.handleAngleChange.bind(this)
   }
-  handleAngleChange () {
-    let matrix
+  handleAngleChange (pivot, wideOffset) {
     let rotate
-    if (this.props.reverse) {
-      matrix = [-1, -1, -1, 1, this.props.xOffset, 0]
-    } else {
-      matrix = [1, 1, -1, 1, this.props.xOffset, 1]
-    }
-
+    let matrix = this.props.reverse ? [-1, -1, -1, 1, this.props.xOffset, 0] : [1, 1, -1, 1, this.props.xOffset, 1]
     if (this.props.side === 'right') {
       const angle = this.props.rightLegAngle
       rotate = [Math.cos(angle), Math.sin(angle), Math.sin(angle), Math.cos(angle), 1, 1]
     } else {
+      matrix[4] += this.props.reverse && wideOffset ? wideOffset : 0
       const angle = this.props.leftLegAngle
       rotate = [Math.cos(angle), Math.sin(angle), Math.sin(angle), Math.cos(angle), 1, 1]
     }
     for (var i = 0; i < 6; i++) {
       matrix[i] = matrix[i] * rotate[i]
     }
-
+    console.log(pivot)
     return {
       transform: `matrix(${matrix})`,
-      transformOrigin: `${this.props.side} top`
+      transformOrigin: `${pivot || this.props.side} top`
     }
   }
   render () {
-    const { img, style } = anatomy.parts.legs[this.props.legType]
+    const { img, style, pivot, offset } = anatomy.parts.legs[this.props.legType]
     return (
       <img
         className={`leg ${style}`}
-        style={this.handleAngleChange()}
+        style={this.handleAngleChange(pivot, offset)}
         src={`../public/img/${img}.png`}
       />
     )

@@ -27,6 +27,16 @@
       "name": "Crab",
       "img": "crab-arm",
       "style": "tall-limb" 
+    }],
+    "orientations":[{
+      "id": 0,
+      "name": "Left"
+    }, {
+      "id": 1,
+      "name": "Center"
+    }, {
+      "id": 2,
+      "name": "Right"
     }]
   }
 }

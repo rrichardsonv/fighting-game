@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import '../public/css/Figure.css'
 import Arm from './Arm'
 import Leg from './Leg'
+import Head from './Head'
 
 class Figure extends React.Component {
   constructor (props) {
@@ -12,17 +13,17 @@ class Figure extends React.Component {
   orientLimbs () {
     const pos = this.props.bodyPosition
     switch (pos) {
-      case 1:
+      case 0:
         return {
           reverse: [false, false, false, false],
           xOffset: [0, 0, 0, 0]
         }
-      case 0:
+      case 1:
         return {
           reverse: [false, true, true, false],
           xOffset: [0, -40, 50, 0]
         }
-      case -1:
+      case 2:
         return {
           reverse: [true, true, true, true],
           xOffset: [40, -40, 60, -40]
@@ -40,10 +41,20 @@ class Figure extends React.Component {
     const xOffset = limbs.xOffset
     return (
       <div className='figure'>
-        <img className='head tall-limb' src='../public/img/head.png' />
+        <Head headType={this.props.headType} />
         <div className='torso-wrapper'>
-          <Arm side='left' xOffset={xOffset[0]} reverse={reverse[0]} />
-          <Arm side='right' xOffset={xOffset[1]} reverse={reverse[1]} />
+          <Arm
+            side='left'
+            xOffset={xOffset[0]}
+            reverse={reverse[0]}
+            armType={this.props.leftArmType}
+          />
+          <Arm
+            side='right'
+            xOffset={xOffset[1]}
+            reverse={reverse[1]}
+            armType={this.props.rightArmType}
+          />
           <Leg
             side='left'
             legType={this.props.leftLegType}
@@ -67,14 +78,20 @@ const { number } = React.PropTypes
 Figure.propTypes = {
   bodyPosition: number,
   leftLegType: number,
-  rightLegType: number
+  rightLegType: number,
+  rightArmType: number,
+  leftArmType: number,
+  headType: number
 }
 
 const mapStateToProps = (state) => {
   return {
     bodyPosition: state.bodyPosition,
     rightLegType: state.rightLegType,
-    leftLegType: state.leftLegType
+    leftLegType: state.leftLegType,
+    rightArmType: state.rightArmType,
+    leftArmType: state.rightArmType,
+    headType: state.headType
   }
 }
 

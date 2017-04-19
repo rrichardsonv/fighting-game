@@ -1,13 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import '../public/css/Arm.css'
+import anatomy from '../public/json/anatomy.json'
 
 class Arm extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.handleAngleChange = this.handleAngleChange.bind(this)
-  }
   handleAngleChange () {
     let matrix
     let rotate
@@ -34,11 +30,12 @@ class Arm extends React.Component {
     }
   }
   render () {
+    const { img, style } = anatomy.parts.arms[this.props.armType]
     return (
       <img
-        className='arm tall-limb'
+        className={`arm ${style}`}
         style={this.handleAngleChange()}
-        src='../public/img/arm.png'
+        src={`../public/img/${img}.png`}
       />
     )
   }
@@ -48,6 +45,7 @@ const { bool, number, string } = React.PropTypes
 Arm.propTypes = {
   xOffset: number,
   reverse: bool,
+  armType: number,
   leftArmAngle: number,
   rightArmAngle: number,
   side: string

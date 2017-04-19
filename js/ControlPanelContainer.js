@@ -44,28 +44,29 @@ class ControlPanelContainer extends React.Component {
       rightLeg: this.handleRightLegAngleChange
     })
   }
-  handleLeftArmTypeChange (event) {
-    let type = parseInt(event.target.value)
+  handleLeftArmTypeChange (newValue) {
+    let type = parseInt(newValue)
     this.props.dispatch(setLeftArmType(type))
   }
-  handleRightArmTypeChange (event) {
-    let type = parseInt(event.target.value)
+  handleRightArmTypeChange (newValue) {
+    let type = parseInt(newValue)
     this.props.dispatch(setRightArmType(type))
   }
-  handleLeftLegTypeChange (event) {
-    let type = parseInt(event.target.value)
+  handleLeftLegTypeChange (newValue) {
+    console.log(newValue)
+    let type = parseInt(newValue)
     this.props.dispatch(setLeftLegType(type))
   }
-  handleRightLegTypeChange (event) {
-    let type = parseInt(event.target.value)
+  handleRightLegTypeChange (newValue) {
+    let type = parseInt(newValue)
     this.props.dispatch(setRightLegType(type))
   }
-  handleHeadTypeChange (event) {
-    let type = parseInt(event.target.value)
+  handleHeadTypeChange (newValue) {
+    let type = parseInt(newValue)
     this.props.dispatch(setHeadType(type))
   }
-  handleBodyPositionChange (event) {
-    let pos = parseInt(event.target.value)
+  handleBodyPositionChange (newValue) {
+    let pos = parseInt(newValue)
     this.props.dispatch(setBodyPosition(pos))
   }
   typeHandlers () {

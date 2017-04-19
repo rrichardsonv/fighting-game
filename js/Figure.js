@@ -90,7 +90,7 @@ const mapStateToProps = (state) => {
     rightLegType: state.rightLegType,
     leftLegType: state.leftLegType,
     rightArmType: state.rightArmType,
-    leftArmType: state.rightArmType,
+    leftArmType: state.leftArmType,
     headType: state.headType
   }
 }
